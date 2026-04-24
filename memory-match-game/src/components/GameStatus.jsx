@@ -8,8 +8,8 @@ export default function GameStatus({ gameStatus, score, restartGame }) {
           {gameStatus === "won" ? "YOU WIN 🎉" : "GAME OVER 💀"}{" "}
         </h2>
         <p className="text-white font-mono text-xl">FINAL SCORE: {score} </p>
-        {gameStatus === "lost" && score < 60 && (
-          <p className="text-[#888888] font-mono text-sm ">minimun score not reached</p>
+        {gameStatus === "lost" && score < 50 && (
+          <p className="text-[#888888] font-mono text-sm ">minimum score not reached</p>
         )}
         <button
           onClick={restartGame}

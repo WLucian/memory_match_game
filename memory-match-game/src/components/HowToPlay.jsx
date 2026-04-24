@@ -23,7 +23,7 @@ export default function HowToPlay() {
           </p>
           <p>⏱ Match all pairs before time runs out</p>
           <p>
-            🏆 Minimum score to win → <span className="text-white">60 points</span>
+            🏆 Minimum score to win → <span className="text-white">50 points</span>
           </p>
         </div>
       )}

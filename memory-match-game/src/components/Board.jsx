@@ -61,7 +61,7 @@ export default function Board() {
 
   useEffect(() => {
     if (matchCards.length === 16) {
-      setGameStatus(score >= 60 ? "won" : "lost");
+      setGameStatus(score >= 50 ? "won" : "lost");
     }
   }, [matchCards]);
 
