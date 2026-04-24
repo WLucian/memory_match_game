@@ -3,6 +3,7 @@ import { generateCards } from "../data/cards";
 import Card from "./Card";
 import GameStatus from "./GameStatus";
 import ScoreBoard from "./ScoreBoard";
+import HowToPlay from "./HowToPlay";
 
 export default function Board() {
   const [cards, setCards] = useState(generateCards());
@@ -83,6 +84,7 @@ export default function Board() {
           />
         ))}
       </div>
+      <HowToPlay />
     </div>
   );
 }
