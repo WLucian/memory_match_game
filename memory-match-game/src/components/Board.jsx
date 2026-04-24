@@ -44,6 +44,8 @@ export default function Board() {
   };
 
   useEffect(() => {
+    if (gameStatus !== "playing") return;
+
     const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev === 0) {
@@ -57,7 +59,7 @@ export default function Board() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [gameStatus]);
 
   useEffect(() => {
     if (matchCards.length === 16) {
