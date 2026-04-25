@@ -1,5 +1,5 @@
-export default function GameStatus({ gameStatus, score, restartGame }) {
-  if (gameStatus === "playing") return null;
+export default function GameStatus({ gameStatus, score, restartGame, resetHighScore }) {
+  if (gameStatus === "playing" || gameStatus === "idle") return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
@@ -12,8 +12,14 @@ export default function GameStatus({ gameStatus, score, restartGame }) {
           <p className="text-[#888888] font-mono text-sm ">minimum score not reached</p>
         )}
         <button
-          onClick={restartGame}
+          onClick={resetHighScore}
           className="mt-4 px-8 py-3 bg-white text-black font-mono font-bold rounded-xl hover:bg-[#e0e0e0] transition-all duration-300 ">
+          reset best score
+        </button>
+
+        <button
+          onClick={restartGame}
+          className=" px-8 py-3 bg-white text-black font-mono font-bold rounded-xl hover:bg-[#e0e0e0] transition-all duration-300 ">
           PLAY AGAIN
         </button>
       </div>

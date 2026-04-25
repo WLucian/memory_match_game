@@ -14,6 +14,23 @@ export default function Board() {
   const [timer, setTimer] = useState(60);
   const [gameStatus, setGameStatus] = useState("idle");
 
+  const [highScore, setHighScore] = useState(() => {
+    const saved = localStorage.getItem("savedScore");
+    return saved ? JSON.parse(saved) : 0;
+  });
+
+  useEffect(() => {
+    if (score > highScore) {
+      setHighScore(score);
+      localStorage.setItem("savedScore", JSON.stringify(score));
+    }
+  }, [score]);
+
+  const resetHighScore = () => {
+    setHighScore(0);
+    localStorage.removeItem("savedScore");
+  };
+
   const restartGame = () => {
     setCards(generateCards());
     setFlippedCards([]);
@@ -74,10 +91,15 @@ export default function Board() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <GameStatus gameStatus={gameStatus} score={score} restartGame={restartGame} />
+      <GameStatus
+        gameStatus={gameStatus}
+        score={score}
+        restartGame={restartGame}
+        resetHighScore={resetHighScore}
+      />
       <StartScreen gameStatus={gameStatus} startGame={startGame} />
       <h1 className="text-white font-mono text-2xl font-bold tracking-widest">MEMORY MATCH</h1>
-      <ScoreBoard score={score} timer={timer} />
+      <ScoreBoard score={score} timer={timer} highScore={highScore} />
 
       <div className="grid grid-cols-4 gap-3">
         {cards.map((card) => (
