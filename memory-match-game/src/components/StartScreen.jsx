@@ -4,7 +4,9 @@ export default function StartScreen({ gameStatus, startGame }) {
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
       <div className="bg-[#111111] border border-[#2a2a2a] rounded-2xl p-10 flex flex-col items-center gap-6">
-        <h1 className="text-white font-mono text-4xl font-bold tracking-widest">MEMORY MATCH</h1>
+        <h1 className="text-white font-mono text-4xl font-bold text-center tracking-widest">
+          MEMORY MATCH
+        </h1>
 
         <p className="text-[#888888] font-mono text-sm text-center">
           Find all matching pairs before time runs out
