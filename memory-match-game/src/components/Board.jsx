@@ -4,6 +4,7 @@ import Card from "./Card";
 import GameStatus from "./GameStatus";
 import ScoreBoard from "./ScoreBoard";
 import HowToPlay from "./HowToPlay";
+import StartScreen from "./StartScreen";
 
 export default function Board() {
   const [cards, setCards] = useState(generateCards());
@@ -11,7 +12,7 @@ export default function Board() {
   const [matchCards, setMatchCards] = useState([]);
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(60);
-  const [gameStatus, setGameStatus] = useState("playing");
+  const [gameStatus, setGameStatus] = useState("idle");
 
   const restartGame = () => {
     setCards(generateCards());
@@ -43,6 +44,10 @@ export default function Board() {
     }
   };
 
+  const startGame = () => {
+    setGameStatus("playing");
+  };
+
   useEffect(() => {
     if (gameStatus !== "playing") return;
 
@@ -70,6 +75,7 @@ export default function Board() {
   return (
     <div className="flex flex-col items-center gap-6">
       <GameStatus gameStatus={gameStatus} score={score} restartGame={restartGame} />
+      <StartScreen gameStatus={gameStatus} startGame={startGame} />
       <h1 className="text-white font-mono text-2xl font-bold tracking-widest">MEMORY MATCH</h1>
       <ScoreBoard score={score} timer={timer} />
 
